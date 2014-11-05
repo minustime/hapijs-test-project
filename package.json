@@ -1,0 +1,24 @@
+{
+  "name": "hapijs-test-project",
+  "version": "0.1.0",
+  "description": "A project to test Hapi.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/lab/bin/lab -c"
+  },
+  "dependencies": {
+    "async": "*",
+    "forever": "0.11.1",
+    "jade": "1.7.0",
+    "moment": "2.8.3",
+    "good": "3.1.0",
+    "request": "2.45.0",
+    "hapi": "^7.2.0"
+  },
+  "devDependencies": {
+    "joi": "^4.7.0",
+    "lab": "^5.0.1",
+    "code": "^1.2.0"
+  },
+  "private": true
+}
