@@ -1,11 +1,11 @@
-### Hapi.js test project
+# Hapi.js test project
 
 ## Setup
 
-Install dependencies
+1.  Install dependencies
 `$ npm install`
  
-Create a config.json file
+2. Create a config.json file
 `$ cp server/config.sample.json server/config.json`
 
 ## Run
