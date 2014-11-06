@@ -7,8 +7,7 @@ exports.register = function(plugin, options, next) {
 	plugin.route({
 		method: 'GET',
 		path: '/',
-		handler: function(request, reply) {
-			
+		handler: function(request, reply) {			
 			home.getContent(function(content) {
 				reply.view('home', content);
 			});

@@ -27,16 +27,16 @@ server.views({
 // Register all the plugins that make up the site
 server.pack.register([
 
-  // Site sections
-  {plugin: require('./server/facets/home')},
-  {plugin: require('./server/facets/products')},
- 
   // Utils
   {
     plugin: require('./server/plugins/webservice-adapter'),
     options: config.webservice_adapter
   },  
-  
+
+  // Site sections
+  {plugin: require('./server/facets/home')},
+  {plugin: require('./server/facets/products')},
+   
   // Logging
   {
     plugin: require('good'),
