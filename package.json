@@ -13,7 +13,7 @@
     "moment": "2.8.3",
     "good": "3.1.0",
     "request": "2.45.0",
-    "hapi": "^7.2.0"
+    "hapi": "7.5.2"
   },
   "devDependencies": {
     "joi": "^4.7.0",

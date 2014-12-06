@@ -1,6 +1,6 @@
 var Hapi = require('hapi');
 var Good = require('good');
-var config = require('./server/config/config');
+var config = require('./config/config');
 
 var server = module.exports = new Hapi.Server('0.0.0.0', config.server.port, {debug:{request:['error']}});
 
@@ -36,7 +36,8 @@ server.pack.register([
   // Site sections
   {plugin: require('./server/facets/home')},
   {plugin: require('./server/facets/products')},
-   
+  {plugin: require('./server/facets/about')},
+
   // Logging
   {
     plugin: require('good'),
