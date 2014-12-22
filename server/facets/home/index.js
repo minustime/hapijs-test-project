@@ -1,15 +1,10 @@
-exports.register = function(plugin, options, next) {
+exports.register = function(server, options, next) {
 
-	var ws = plugin.plugins['webservice-adapter'];
+	var ws = server.plugins['webservice-adapter'];
 	var home = require('./Home')(ws);
 
-	plugin.views({
-		engines: {jade: require('jade')},
-		path: __dirname + '/../../views'
-	});
-
 	// Define the routes
-	plugin.route({
+	server.route({
 		method: 'GET',
 		path: '/',
 		handler: function(request, reply) {

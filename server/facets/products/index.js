@@ -1,9 +1,9 @@
-exports.register = function(plugin, options, next) {
+exports.register = function(server, options, next) {
 
-	var ws = plugin.plugins['webservice-adapter'];
+	var ws = server.plugins['webservice-adapter'];
 
 	// Define the routes
-	plugin.route({
+	server.route({
 		method: 'GET',
 		path: '/products',
 		handler: function(request, reply) {						

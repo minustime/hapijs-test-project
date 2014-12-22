@@ -1,21 +1,16 @@
 var async = require('async');
 
-exports.register = function(plugin, options, next) {
+exports.register = function(server, options, next) {
 
 	// Global utilities
-	var ws = plugin.plugins['webservice-adapter'];
+	var ws = server.plugins['webservice-adapter'];
 
 	// Page level modules
-	var accolades = require('../../modules/accolades')(plugin, ws);
-	var articles = require('../../modules/articles')(plugin, ws);
+	var accolades = require('../../modules/accolades')(ws);
+	var articles = require('../../modules/articles')(ws);
 
-	plugin.views({
-		engines: {jade: require('jade')},
-		path: __dirname + '/views'
-	});
-		
 	// Define the routes
-	plugin.route({
+	server.route({
 		method: 'GET',
 		path: '/about',
 		handler: function(request, reply) {

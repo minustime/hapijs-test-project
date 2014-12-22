@@ -1,23 +1,24 @@
 // Dependencies
-var request = require('request');
+var wreck = require('wreck');
 
-exports.register = function(plugin, options, next) {
+exports.register = function(server, options, next) {
 
 	var api = {};
 	var endpoint = options;
 
 	var requestData = function(endpoint, callback) {
-		request({
-			uri: endpoint,
-			json: true,
-		}, function(err, response, body){
-			if(!err && response.statusCode == 200) {
-				callback(body);
+
+		wreck.get(endpoint, null, function(err, res, data) {
+
+			if(err) {
+				server.log(['error'], err);
+				callback(null);
 			}
 			else {
-				callback(null);
-				console.log(err);
+				var json = JSON.parse(data);
+				callback(json);
 			}
+
 		});
 	}	
 
@@ -33,7 +34,19 @@ exports.register = function(plugin, options, next) {
 		requestData(url, callback);
 	}
 
-	plugin.expose(api);
+	// Get accolades
+	api.getAccolades = function(callback) {
+		var url = endpoint.accolades;
+		requestData(url, callback);
+	}
+
+	// Get articles
+	api.getArticles = function(callback) {
+		var url = endpoint.articles;
+		requestData(url, callback);
+	}
+
+	server.expose(api);
 
 	next();
 }

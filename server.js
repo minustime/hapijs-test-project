@@ -1,8 +1,9 @@
 var Hapi = require('hapi');
-var Good = require('good');
 var config = require('./config/config');
 
-var server = module.exports = new Hapi.Server('0.0.0.0', config.server.port, {debug:{request:['error']}});
+var server = new Hapi.Server();
+
+server.connection({port: 8000});
 
 // Serve static files, in production Nginx would take care of this
 server.route({
@@ -25,32 +26,40 @@ server.views({
 });
 
 // Register all the plugins that make up the site
-server.pack.register([
+server.register([
 
   // Utils
   {
-    plugin: require('./server/plugins/webservice-adapter'),
+    register: require('./server/plugins/webservice-adapter'),
     options: config.webservice_adapter
   },  
 
   // Site sections
-  {plugin: require('./server/facets/home')},
-  {plugin: require('./server/facets/products')},
-  {plugin: require('./server/facets/about')},
+  {register: require('./server/facets/home')},
+  {register: require('./server/facets/products')},
+  {register: require('./server/facets/about')},
 
   // Logging
-  {
-    plugin: require('good'),
-    options: {reporters: [{reporter: Good.GoodConsole}]}
+  {register: require('good'),
+    options: {
+      reporters: [{
+        reporter: require('good-console'), 
+        args:[{ log: '*', request: '*', error: '*', response: '*'}]
+      },
+      {
+        reporter: require('good-file'),
+        args:['logs/app.log',
+              {log: '*', request: '*', error: '*', response: '*'}],
+      }]
+    }
   }
  
 ], function(err) {
 
     if (err) throw err;
 
-    if( ! module.parent) {
-      server.start(function() {
-          console.log("Hapi server started @ " + server.info.uri);
-      });  
-    }
+    server.start(function() {
+        console.log("Hapi server started @ " + server.info.uri);
+    });  
+    
 });
