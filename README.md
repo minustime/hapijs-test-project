@@ -1,17 +1,49 @@
 # Hapi.js test project
 
-## Setup
+Simple Hapi.js project.
 
-1.  Install dependencies
+## Quick setup
+
+If you already have Node running on your machine, this is the easiest way to get the project up and running.
+
+### Requirements
+
+- Node.js v0.10.33
+- npm v2.1.11
+
+### Installation steps
+
+1. Install project dependencies
 `$ npm install`
  
 2. Create a config.json file
 `$ cp server/config.sample.json server/config.json`
 
-## Run
+### Run
 
 `$ node server`
 
-## Use
+### Use
+
+On your browser go to: `http://localhost:8000`
+
+## Using Docker
+
+This is the alternative method of running the project with Docker. 
+
+### Requirements
+
+- Docker - https://docs.docker.com/installation
+- Fig - http://www.fig.sh/install.html
+
+1. Build with fig
+
+`$ fig -p hapiproject build`
+
+### Run
+
+`$ fig -p hapiproject up`
+
+### Use
 
 On your browser go to: `http://localhost:8000`

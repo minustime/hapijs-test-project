@@ -1,0 +1,12 @@
+{
+	"server" : {
+		"port": 8000,
+		"cacheTemplates": true
+	},
+	"webservice_adapter": {
+		"users": "http://www.mocky.io/v2/545a6f541fe3f4de1104a311",
+		"products": "http://www.mocky.io/v2/545a6f301fe3f4d91104a310",
+		"articles": "http://www.mocky.io/v2/5483a4452f4b84fe041bba4d",
+		"accolades": "http://www.mocky.io/v2/5483a4702f4b840a051bba4e"		
+	}
+}
