@@ -1,9 +1,18 @@
 var Hapi = require('hapi');
 var config = require('./config/config');
 
-var server = new Hapi.Server();
+var server = new Hapi.Server({
+  cache: {
+    engine: require('catbox-memcached'),
+    host: config.memcached.host,
+    port: config.memcached.port
+  }
+});
 
-server.connection({port: 8000});
+server.connection({
+  host: '0.0.0.0',
+  port: 8000
+});
 
 // Serve static files, in production Nginx would take care of this
 server.route({
@@ -29,10 +38,8 @@ server.views({
 server.register([
 
   // Utils
-  {
-    register: require('./server/plugins/webservice-adapter'),
-    options: config.webservice_adapter
-  },  
+  {register: require('./server/plugins/webservice-adapter'),
+    options: config.webservice_adapter},  
 
   // Site sections
   {register: require('./server/facets/home')},

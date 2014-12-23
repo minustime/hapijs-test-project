@@ -2,3 +2,8 @@ site:
   build: .
   ports: 
     - "8000:8000"
+memcached:
+  build: extra/memcached
+  ports:
+    - "11211:11211"
+  

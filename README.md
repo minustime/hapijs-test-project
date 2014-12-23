@@ -2,7 +2,7 @@
 
 Simple Hapi.js project.
 
-## Quick setup
+## Simple setup
 
 If you already have Node running on your machine, this is the easiest way to get the project up and running.
 
