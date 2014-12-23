@@ -29,14 +29,14 @@ On your browser go to: `http://localhost:8000`
 
 ## Using Docker
 
-This is the alternative method of running the project with Docker. 
+This is the alternative method using Docker
 
 ### Requirements
 
 - Docker - https://docs.docker.com/installation
 - Fig - http://www.fig.sh/install.html
 
-1. Build with fig
+### Installation steps
 
 `$ fig -p hapiproject build`
 
