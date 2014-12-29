@@ -28,6 +28,9 @@ RUN cd /tmp && npm install && \
 # Add the project source
 ADD src ${WORKDIR}
 
+RUN cd ${WORKDIR} && \
+	npm install --loglevel verbose
+
 # Set default app configuration
 RUN cp config/config.sample.json ${WORKDIR}/config/config.json
 

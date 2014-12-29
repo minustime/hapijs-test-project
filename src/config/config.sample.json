@@ -4,7 +4,7 @@
 		"cacheTemplates": true
 	},
 	"memcached": {
-		"host": "localhost",		
+		"host": "memcached",		
 		"port": 11211
 	},	
 	"webservice_adapter": {
