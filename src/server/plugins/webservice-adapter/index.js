@@ -5,7 +5,9 @@ exports.register = function(server, options, next) {
 
 	var api = {};
 	var remote = options;
-	var cache = server.cache({});
+	var cache = server.cache({
+		expiresIn: 5000
+	});
 
 	var requestData = function(endpoint, callback) {
 
@@ -23,9 +25,8 @@ exports.register = function(server, options, next) {
 					else {
 
 						var json = JSON.parse(data);
-						
 						// Cache results
-						cache.set(endpoint, json, 60 * 1000, function(err) {
+						cache.set(endpoint, json, null, function(err) {
 							callback(json);
 						});
 					}
